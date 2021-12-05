@@ -1,0 +1,22 @@
+doctype html
+mixin item(title, url)
+  li(style='list-item')
+    a(href = url class = path == url ? 'active' : '')=title
+//- Pozyżej do znacznika href przypisujemy url. Następnie robimy klase dla css. Do klasy przypoisujemy nazwę active
+//- jeśli ścieżka jest zgodnia z url'em
+
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    span=path
+    nav
+      ul
+        +item('Home page', '/')
+        +item('About', '/about')
+        +item('News', '/news')
+        +item('Search', '/search')
+      //- Dodajemy menu skonstruowane w mixin'ie
+
+    block content
